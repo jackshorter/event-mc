@@ -1,4 +1,4 @@
 name: event
 version: '${project.version}'
-main: dev.rgd.event.event
+main: dev.rgd.event.eventPlugin
 api-version: 1.17
