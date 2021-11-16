@@ -38,7 +38,6 @@ public class HubScoreboard {
         score.setPrefix(points.getScore(player).toString());
         objective.getScore("Your score: ").setScore(8);
 
-
         player.setScoreboard(scoreboard);
     }
 
