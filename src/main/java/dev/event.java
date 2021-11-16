@@ -9,6 +9,7 @@ public final class event extends JavaPlugin {
         // Plugin startup logic
 
         System.out.println("starting...");
+
     }
 
     @Override
