@@ -1,4 +1,4 @@
 name: event
 version: '${project.version}'
-main: dev.event
+main: dev.rgd.event.event
 api-version: 1.17
