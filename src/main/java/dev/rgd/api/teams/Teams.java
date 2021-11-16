@@ -129,11 +129,34 @@ public class Teams {
 
     public void addPlayer(Player player, TeamEnum team){
         for (Team teams : scoreboard.getTeams()){
-            if (teams.getName() != team.name())return;
-
+            if (teams.getName() != team.name()) return;
             teams.addPlayer(player);
-
         }
+    }
+    public Team getTeam(Player player){
+        for (Team team : scoreboard.getTeams()){
+            if (team.getEntries().contains(player)){
+                return team;
+            }
+        }
+        return null;
+    }
+    public String getTeamDisplayName(Player player){
+        for (Team team : scoreboard.getTeams()){
+            if (team.getEntries().contains(player)){
+                return team.getDisplayName();
+            }
+        }
+        return "No Team!";
+    }
+    public ChatColor getTeamChatColor(Player player){
+        for (Team team : scoreboard.getTeams()){
+            if (team.getEntries().contains(player)){
+                return team.getColor();
+            }
+            return ChatColor.WHITE;
+        }
+        return ChatColor.WHITE;
     }
 
 }

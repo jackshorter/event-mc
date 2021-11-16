@@ -10,7 +10,7 @@ public class Points {//everything here untested because its different to the ori
     EventPlugin plugin = EventPlugin.getInstance();
 
 
-    public HashMap<String, Integer> playerScores = new HashMap<>();
+    private final HashMap<String, Integer> playerScores = new HashMap<>();
 
 
     public void addToScore(Player player, int score){
@@ -18,16 +18,15 @@ public class Points {//everything here untested because its different to the ori
 
         String playerUUID = player.getUniqueId().toString();
         if (!playerScores.containsKey(playerUUID)){
-            int newScore = 0;
-            playerScores.put(playerUUID,0);
+            playerScores.put(playerUUID,0); // if player doesn't have a score yet, this puts 0 into the hashmap to avoid any null errors.
         }
-        playerScores.put(playerUUID, playerScores.get(playerUUID) + score);
+        playerScores.put(playerUUID, playerScores.get(playerUUID) + score); // put new score into hashmap.
 
         saveScores();
     }
     public Integer getScore(Player player){
         if (!playerScores.containsKey(player.getUniqueId().toString())){
-            return 0;
+            return 0; // returns 0 if player doesn't have a score in the hashmap to avoid null errors.
         }
         return playerScores.get(player.getUniqueId().toString());
     }
