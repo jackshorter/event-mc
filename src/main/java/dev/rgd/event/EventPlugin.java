@@ -14,7 +14,7 @@ public final class EventPlugin extends JavaPlugin implements Listener {
         // Plugin startup logic
         instance = this;
 
-        System.out.println("starting...");
+        System.out.println("starting..");
 
         /*add Players to teams like this, obviously not me or bobbie. Customisation of teams will be handled separately.
 
