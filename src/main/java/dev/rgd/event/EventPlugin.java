@@ -1,5 +1,6 @@
 package dev.rgd.event;
 
+import dev.rgd.event.scoreboard.outOfGame.HubScoreboard;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -37,6 +38,7 @@ public final class EventPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
+        new HubScoreboard().createScoreboard(event.getPlayer());
         event.getPlayer().sendMessage("Welcome!");
     }
 }
