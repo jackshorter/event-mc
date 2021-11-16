@@ -17,6 +17,8 @@ public final class EventPlugin extends JavaPlugin implements Listener {
 
         System.out.println("starting..");
 
+        getServer().getPluginManager().registerEvents(this,this);
+
         /*add Players to teams like this, obviously not me or bobbie. Customisation of teams will be handled separately.
 
         Teams teams = new Teams();
