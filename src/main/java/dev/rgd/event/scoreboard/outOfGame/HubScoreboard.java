@@ -67,6 +67,7 @@ public class HubScoreboard {
                     time += plugin.addToTimer;
                     plugin.addToTimer = 0;
                 }
+
                 if (time == 0)this.cancel();
                 Bukkit.getOnlinePlayers().forEach(player -> Objects.requireNonNull(player.getScoreboard().getTeam("timer")).setSuffix(Text.SplitToComponentTimes(time)));
                 time -= 1;

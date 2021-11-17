@@ -1,7 +1,6 @@
 package dev.rgd.event.opCommands;
 
 import dev.rgd.event.EventPlugin;
-import jdk.jfr.Event;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -40,10 +39,6 @@ public class TimerCommand implements TabExecutor {
                 break;
             case "add":
                 plugin.addToTimer += Integer.parseInt(strings[1]);
-                break;
-
-            case "set":
-                plugin.addToTimer = Integer.parseInt(strings[1]);
                 break;
         }
 
