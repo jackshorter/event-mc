@@ -1,6 +1,9 @@
 package dev.rgd.event;
 
+import dev.rgd.api.teams.EventTeams;
+import dev.rgd.api.teams.Teams;
 import dev.rgd.event.scoreboard.outOfGame.HubScoreboard;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -19,7 +22,10 @@ public final class EventPlugin extends JavaPlugin implements Listener {
 
         getServer().getPluginManager().registerEvents(this,this);
 
-        /*add Players to teams like this, obviously not me or bobbie. Customisation of teams will be handled separately.
+        Teams teams = new Teams();
+        teams.addPlayer(Bukkit.getPlayer("Sappermine"), EventTeams.orange);
+
+        /*add Players to teams like this, obviously not me or bobbie. Customisation of teams is handled separately.
 
         Teams teams = new Teams();
         teams.addPlayer(Bukkit.getPlayer("sappermine"),TeamEnum.red);
