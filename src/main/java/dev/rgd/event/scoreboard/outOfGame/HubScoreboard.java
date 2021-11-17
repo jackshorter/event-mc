@@ -24,19 +24,20 @@ public class HubScoreboard {
 
         Team timer = scoreboard.registerNewTeam("timer");
         timer.addEntry("");
-        timer.setPrefix( "Starting in: " + StringUtils.repeat(ChatColor.MAGIC.toString(),3));
+        timer.setPrefix(ChatColor.GOLD + "Starting in: " + ChatColor.MAGIC);
         objective.getScore("").setScore(15);
 
-        objective.getScore(ChatColor.RESET.toString()).setScore(14);
+        objective.getScore(" ").setScore(14);// blank line
 
         objective.getScore(ChatColor.BOLD + "Your Team:").setScore(12);
         objective.getScore(teams.getTeamChatColor(player) + teams.getTeamDisplayName(player)).setScore(11);
-        objective.getScore(ChatColor.RESET.toString().toLowerCase()).setScore(10);
+
+        objective.getScore("  ").setScore(10);// blank line
 
         Team score = scoreboard.registerNewTeam("score");
-        score.addEntry(ChatColor.GOLD.toString() + ChatColor.BOLD + "Your score: " + ChatColor.WHITE);
-        score.setPrefix(points.getScore(player).toString());
-        objective.getScore("Your score: ").setScore(8);
+        score.addEntry(ChatColor.GOLD.toString() + ChatColor.BOLD + "Score: " + ChatColor.WHITE);
+        score.setSuffix(points.getScore(player).toString());
+        objective.getScore(ChatColor.GOLD.toString() + ChatColor.BOLD + "Score: " + ChatColor.WHITE).setScore(8);
 
         player.setScoreboard(scoreboard);
     }
