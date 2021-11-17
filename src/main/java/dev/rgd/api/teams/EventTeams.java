@@ -1,6 +1,6 @@
 package dev.rgd.api.teams;
 
-public enum TeamEnum {
+public enum EventTeams {
 
     spectator,
     red,
