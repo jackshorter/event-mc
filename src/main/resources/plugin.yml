@@ -2,3 +2,9 @@ name: event
 version: '${project.version}'
 main: dev.rgd.event.EventPlugin
 api-version: 1.17
+
+commands:
+  timer:
+    description: commands for pausing and adding to scoreboard timers.
+    usage: /timer
+

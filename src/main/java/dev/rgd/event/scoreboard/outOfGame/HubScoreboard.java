@@ -16,6 +16,7 @@ import org.bukkit.scoreboard.Team;
 import java.util.Objects;
 
 public class HubScoreboard {
+    private final EventPlugin plugin = EventPlugin.getInstance();
     private final Teams teams = new Teams();
     private final Points points = new Points();
     public int time = 0;
@@ -61,18 +62,21 @@ public class HubScoreboard {
         new BukkitRunnable(){
             @Override
             public void run() {
+                if (plugin.pauseTimer)return;
+                if (plugin.addToTimer != 0){
+                    time += plugin.addToTimer;
+                    plugin.addToTimer = 0;
+                }
                 if (time == 0)this.cancel();
                 Bukkit.getOnlinePlayers().forEach(player -> Objects.requireNonNull(player.getScoreboard().getTeam("timer")).setSuffix(Text.SplitToComponentTimes(time)));
                 time -= 1;
             }
-        }.runTaskTimer(EventPlugin.getInstance(),0,20);
+        }.runTaskTimer(plugin,0,20);
     }
-
     /*
     name tbd
     starting in: {time} 15
-                        14
-    Your team:          13
+                        14    Your team:          13
     {team}              12
                         11
     Score: {score}      10
