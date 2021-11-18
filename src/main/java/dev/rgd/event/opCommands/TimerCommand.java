@@ -38,7 +38,7 @@ public class TimerCommand implements TabExecutor {
                 plugin.pauseTimer = false;
                 break;
             case "add":
-                plugin.addToTimer += Integer.parseInt(strings[1]);
+                plugin.setAddToTimer(plugin.getAddToTimer() + Integer.parseInt(strings[1]) );
                 break;
         }
 
