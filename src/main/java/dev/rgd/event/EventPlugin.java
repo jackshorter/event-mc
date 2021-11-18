@@ -1,21 +1,48 @@
 package dev.rgd.event;
 
+import dev.rgd.api.enums.Game;
 import dev.rgd.api.teams.EventTeams;
 import dev.rgd.api.teams.Teams;
 import dev.rgd.event.opCommands.TimerCommand;
-import dev.rgd.event.scoreboard.outOfGame.HubScoreboard;
+import dev.rgd.event.scoreboard.inGame.CaptureTheFlagScoreboard;
 import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public final class EventPlugin extends JavaPlugin implements Listener {
     private static EventPlugin instance;
     public boolean pauseTimer = false;
-    public int addToTimer = 0;
+
+    private int addToTimer = 0;
+    private Game game = Game.outOfGame;
+
+    final private List<Game> playedGames = new ArrayList<>();
+
+    public int getAddToTimer() {
+        return addToTimer;
+    }
+
+    public void setAddToTimer(int addToTimer) {
+        this.addToTimer = addToTimer;
+    }
+
+    public Game getGame() {
+        return game;
+    }
+
+    public void setGame(Game game) {
+        this.game = game;
+    }
+
+    public List<Game> getPlayedGames() {
+        return playedGames;
+    }
 
     @Override
     public void onEnable() {
@@ -53,7 +80,7 @@ public final class EventPlugin extends JavaPlugin implements Listener {
 
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
-        HubScoreboard hubScoreboard = new HubScoreboard();
+        CaptureTheFlagScoreboard hubScoreboard = new CaptureTheFlagScoreboard();
         hubScoreboard.createScoreboard(event.getPlayer());
         hubScoreboard.setTimer(40);
         event.getPlayer().sendMessage("Welcome!");
