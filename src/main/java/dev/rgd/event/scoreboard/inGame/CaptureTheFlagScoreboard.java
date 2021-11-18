@@ -25,27 +25,27 @@ public class CaptureTheFlagScoreboard {
         Objective objective = scoreboard.registerNewObjective(player.getName().substring(0,4) + "Hub", "dummy","Name TBD");
         objective.setDisplaySlot(DisplaySlot.SIDEBAR);
 
+        objective.getScore( ChatColor.AQUA.toString() + ChatColor.BOLD + "Game: CTF").setScore(15);
+        objective.getScore(ChatColor.AQUA.toString() + ChatColor.BOLD + "Map: insert map name here").setScore(14);
+
         Team timer = scoreboard.registerNewTeam("timer");
-        timer.addEntry(" ");
-        timer.setPrefix(ChatColor.YELLOW.toString() + ChatColor.BOLD + "Starting in: ");
+        timer.addEntry(ChatColor.YELLOW.toString() + ChatColor.BOLD + "Starting in: ");
         timer.setSuffix(ChatColor.MAGIC.toString());
-        objective.getScore(" ").setScore(15);
+        objective.getScore(ChatColor.YELLOW.toString() + ChatColor.BOLD + "Starting in: ").setScore(13);
 
-        objective.getScore(ChatColor.AQUA + "Map: insert map name here").setScore(14);
-
-        objective.getScore(" ").setScore(13);// blank line
+        objective.getScore(" ").setScore(12);// blank line
 
         Team round = scoreboard.registerNewTeam("round");
         round.addEntry(ChatColor.AQUA + "Round: ");
         round.setSuffix(ChatColor.MAGIC.toString());
-        objective.getScore(ChatColor.GREEN + "Round: ").setScore(12);
+        objective.getScore(ChatColor.GREEN + "Round: ").setScore(11);
 
-        objective.getScore("  ").setScore(11);// blank line
+        objective.getScore("  ").setScore(10);// blank line
 
         Team score = scoreboard.registerNewTeam("score");
         score.addEntry(ChatColor.GOLD.toString() + ChatColor.BOLD + "Score: " + ChatColor.WHITE);
         score.setSuffix(points.getScore(player).toString());
-        objective.getScore(ChatColor.GOLD.toString() + ChatColor.BOLD + "Score: " + ChatColor.WHITE).setScore(10);
+        objective.getScore(ChatColor.GOLD.toString() + ChatColor.BOLD + "Score: " + ChatColor.WHITE).setScore(9);
 
         player.setScoreboard(scoreboard);
     }
@@ -67,9 +67,9 @@ public class CaptureTheFlagScoreboard {
             @Override
             public void run() {
                 if (plugin.pauseTimer)return;
-                if (plugin.addToTimer != 0){
-                    time += plugin.addToTimer;
-                    plugin.addToTimer = 0;
+                if (plugin.getAddToTimer() != 0){
+                    time += plugin.getAddToTimer();
+                    plugin.setAddToTimer(0);
                 }
 
                 if (time == 0)this.cancel();
@@ -81,12 +81,13 @@ public class CaptureTheFlagScoreboard {
 
     /*
     name tbd
-    {message} {time}    15
+    game: CTF           15
     map: "map"          14
-                        13
-    Round: {round}      12
-                        11
-    Score: {score}      10
+    {message} {time}    13
+                        12
+    Round: {round}      11
+                        10
+    Score: {score}      19
 
      */
 }

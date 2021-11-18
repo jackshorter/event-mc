@@ -19,6 +19,7 @@ public class HubScoreboard {
     private final EventPlugin plugin = EventPlugin.getInstance();
     private final Teams teams = new Teams();
     private final Points points = new Points();
+
     public int time = 0;
 
     public void createScoreboard(Player player){
@@ -63,9 +64,9 @@ public class HubScoreboard {
             @Override
             public void run() {
                 if (plugin.pauseTimer)return;
-                if (plugin.addToTimer != 0){
-                    time += plugin.addToTimer;
-                    plugin.addToTimer = 0;
+                if (plugin.getAddToTimer() != 0){
+                    time += plugin.getAddToTimer();
+                    plugin.setAddToTimer(0);
                 }
 
                 if (time == 0)this.cancel();
@@ -77,7 +78,8 @@ public class HubScoreboard {
     /*
     name tbd
     starting in: {time} 15
-                        14    Your team:          13
+                        14
+    Your team:          13
     {team}              12
                         11
     Score: {score}      10
